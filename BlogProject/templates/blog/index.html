@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block main %}
+    {% for post in post_list %}
+        <article class="post post-{{ post.pk }}">
+            <header class = "entry-header">
+                <h1 class = "entry-title">
+                    <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
+                </h1>
+                <div class = "entry-meta">
+                    <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
+                    <span class="post-date"><a href="#"><time class="entry-date" datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
+                    <span class="post-author"><a href="#">{{ post.author }}</a></span>
+                    <span class="comments-link"><a href="#">4 Comment</a></span>
+                    <span class="views-count"><a href="#">58 Read</a></span>
+                </div>
+            </header>
+            <div class="entry-content clearfix">
+                <p>{{ post.excerpt}}</p>
+                <div class="read-more cl-effect-14">
+                    <a href = "{{post.get_absolute_url}}" class="more-link">Countinue Read<span class="meta-nav"> -></span></a>
+                </div>
+            </div>
+            <!--
+            <div class="entry-content clearfix">
+                {{ post.body }}
+            </div>
+            -->
+        </article>
+        {% empty %}
+            <div class="no-post">There isn't any article</div>
+    {% endfor %}
+        <section class = "comment-area" id="comment-area">
+            <hr>
+            <h3>Post Comment</h3>
+            <form action="#" method="post" class="comment-form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="id_name">Name:</label>
+                        <input type="text" id="id_name" name="name" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="id_email">Email:</label>
+                        <input type="email" id="id_email" name="email" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="id_url">Website:</label>
+                        <input type="text" id="id_url" name="url">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="id_comment">Comment:</label>
+                        <textarea name="comment" id="id_comment" required></textarea>
+                        <button type="submit" class="comment-btn">Comment</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="comment-list-panel">
+                <h3>Comment List: Total<span>4</span> comments</h3>
+                <ul class="comment-list list-unstyled">
+                    <li class="comment-item">
+                        <span class = "nickname">DreamGirl</span>
+                        <time class="submit-date" datatime="2018-01-15T20:15:30+00:00">2018-01-15, 20:15</time>
+                        <div class="text">Django是一个开放源代码的Web应用框架，由Python写成。采用了MT'V的框架模式，即模型M，模板T和视图V。它最初是被开发来用于管理劳伦斯出版集团旗下的一些以新闻内容为主的网站的，即是CMS（内容管理系统）软件。并于2005年7月在BSD许可证下发布。这套框架是以比利时的吉普赛爵士吉他手Django Reinhardt来命名的。
+                        </div>
+                    </li>
+                    <li class="comment-item">
+                        <span class = "nickname">Superman</span>
+                        <time class="submit-date" datatime="2018-01-15T20:20:30+00:00">2018-01-15, 20:20</time>
+                        <div class="text">Django 项目是一个Python定制框架，它源自一个在线新闻 Web 站点，于 2005 年以开源的形式被释放出来。
+                        </div>
+                    </li>
+                    <li class="comment-item">
+                        <span class = "nickname">Spiderman</span>
+                        <time class="submit-date" datatime="2018-01-15T20:50:30+00:00">2018-01-15, 20:50</time>
+                        <div class="text">由于Django在近年来的迅速发展，应用越来越广泛，被著名IT开发杂志SD Times评选为2013 SD Times 100，位列“API、库和框架”分类第6位，被认为是该领域的佼佼者。
+                        </div>
+                    </li>
+                    <li class="comment-item">
+                        <span class = "nickname">Ironman</span>
+                        <time class="submit-date" datatime="2018-01-15T20:55:30+00:00">2018-01-15, 20:55</time>
+                        <div class="text">Django将MVC中的视图进一步分解为 Django视图 和 Django模板两个部分，分别决定 “展现哪些数据” 和 “如何展现”，使得Django的模板可以根据需要随时替换，而不仅仅限制于内置的模板。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+{% endblock main %}
+
+{% block toc %}
+<!--
+    <div class="widget widget-content">
+        <h3 class="widget-title">Article Content2</h3>
+        <ul>
+            <li><a href="#">Feature</a></li>
+            <li><a href="#">Target People</a></li>
+            <li><a href="#">Online View</a></li>
+            <li><a href="#">Resource List</a></li>
+            <li><a href="#">Get Help</a></li>
+        </ul>
+    </div>
+-->
+{% endblock toc %}
